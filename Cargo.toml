@@ -5,10 +5,15 @@ edition = "2021"
 
 [[bin]]
 name = "day_1"
-path = "src/day_1/main.rs"
+path = "src/day1.rs"
 
 [[bin]]
 name = "day_2"
-path = "src/day_2/main.rs"
+path = "src/day2.rs"
+
+[[bin]]
+name = "day_3"
+path = "src/day3.rs"
 
 [dependencies]
+itertools = "0.10.5"

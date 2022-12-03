@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 use std::env;
-use std::io::{stdin, BufRead};
+use std::io::stdin;
 
 fn main() {
     if let Some(arg) = env::args().nth(1) {
@@ -55,9 +55,9 @@ fn second_part() {
         (("C", "Y"), 3 + 3), // draw
         (("C", "Z"), 1 + 6), // win
     ]
-        .iter()
-        .map(|x| (x.0, x.1 as u64))
-        .collect::<HashMap<(&str, &str), u64>>();
+    .iter()
+    .map(|x| (x.0, x.1 as u64))
+    .collect::<HashMap<(&str, &str), u64>>();
 
     let score = stdin()
         .lines()

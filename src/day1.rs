@@ -1,5 +1,5 @@
 use std::env;
-use std::io::{stdin, BufRead};
+use std::io::stdin;
 
 fn main() {
     if let Some(arg) = env::args().nth(1) {
@@ -18,14 +18,14 @@ fn first_part() {
     let mut max_calories = 0;
     let mut current = 0;
 
-    for line in stdin().lines().map(|x| x.unwrap()) {
+    stdin().lines().map(|x| x.unwrap()).for_each(|line| {
         if line.is_empty() {
             current = 0;
         } else {
             current += line.parse::<u64>().unwrap();
             max_calories = max_calories.max(current);
         }
-    }
+    });
 
     println!("{}", max_calories);
 }
@@ -34,14 +34,14 @@ fn second_part() {
     let mut results = Vec::new();
     let mut current = 0;
 
-    for line in stdin().lines().map(|x| x.unwrap()) {
+    stdin().lines().map(|x| x.unwrap()).for_each(|line| {
         if line.is_empty() {
             results.push(current);
             current = 0;
         } else {
             current += line.parse::<u64>().unwrap();
         }
-    }
+    });
 
     results.push(current);
 
