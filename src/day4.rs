@@ -66,40 +66,4 @@ fn second_part() {
         .sum::<u64>();
 
     println!("{}", res);
-
-    // let mut ranges: Vec<(u64, u64)> = stdin().lines()
-    //     .map(|x| x.unwrap())
-    //     .map(|x| {
-    //         let (first, second) = x.split_once(',').unwrap();
-    //         let first_range = first.split_once('-').unwrap();
-    //         let second_range = second.split_once('-').unwrap();
-
-    //         let range_a = (
-    //             first_range.0.parse::<u64>().unwrap(),
-    //             first_range.1.parse::<u64>().unwrap(),
-    //         );
-    //         let range_b = (
-    //             second_range.0.parse::<u64>().unwrap(),
-    //             second_range.1.parse::<u64>().unwrap(),
-    //         );
-
-    //         (
-    //             range_a.0.min(range_b.0),
-    //             range_a.1.max(range_b.1)
-    //         )
-    //     })
-    //     .collect();
-
-    // let mut res = 0;
-    // for i in 0..ranges.len() {
-    //     for j in i+1..ranges.len() {
-    //         let range_a = ranges[i];
-    //         let range_b = ranges[j];
-    //         if (range_a.0 >= range_b.0 && range_a.1 <= range_b.1) ||
-    //             (range_b.0 >= range_a.0 && range_b.1 <= range_a.1) {
-    //             res += 1u64;
-    //             break;
-    //         }
-    //     }
-    // }
 }
