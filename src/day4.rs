@@ -17,7 +17,8 @@ fn main() {
 
 fn first_part() {
     let started = Instant::now();
-    let res = stdin().lines()
+    let res = stdin()
+        .lines()
         .map(|x| x.unwrap())
         .map(|x| {
             let (first, second) = x.split_once(',').unwrap();
@@ -33,8 +34,8 @@ fn first_part() {
                 second_range.1.parse::<u64>().unwrap(),
             );
 
-            (range_a.0 >= range_b.0 && range_a.1 <= range_b.1) ||
-                (range_b.0 >= range_a.0 && range_b.1 <= range_a.1)
+            (range_a.0 >= range_b.0 && range_a.1 <= range_b.1)
+                || (range_b.0 >= range_a.0 && range_b.1 <= range_a.1)
         })
         .map(|x| if x { 1u64 } else { 0u64 })
         .sum::<u64>();
@@ -43,7 +44,8 @@ fn first_part() {
 }
 
 fn second_part() {
-    let res = stdin().lines()
+    let res = stdin()
+        .lines()
         .map(|x| x.unwrap())
         .map(|x| {
             let (first, second) = x.split_once(',').unwrap();
@@ -59,8 +61,8 @@ fn second_part() {
                 second_range.1.parse::<u64>().unwrap(),
             );
 
-            (range_a.0 >= range_b.0 && range_a.0 <= range_b.1) ||
-                (range_b.0 >= range_a.0 && range_b.0 <= range_a.1)
+            (range_a.0 >= range_b.0 && range_a.0 <= range_b.1)
+                || (range_b.0 >= range_a.0 && range_b.0 <= range_a.1)
         })
         .map(|x| if x { 1u64 } else { 0u64 })
         .sum::<u64>();

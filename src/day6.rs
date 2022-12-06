@@ -19,7 +19,8 @@ fn get_unique(window_size: usize) -> Vec<usize> {
         .lines()
         .map(|x| x.unwrap())
         .map(|line| {
-            line.chars().collect::<Vec<char>>()
+            line.chars()
+                .collect::<Vec<char>>()
                 .windows(window_size)
                 .position(|win| {
                     for i in 0..window_size {
@@ -30,7 +31,9 @@ fn get_unique(window_size: usize) -> Vec<usize> {
                         }
                     }
                     true
-                }).unwrap() + window_size
+                })
+                .unwrap()
+                + window_size
         })
         .collect::<Vec<usize>>()
 }

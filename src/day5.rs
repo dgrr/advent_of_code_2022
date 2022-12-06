@@ -1,6 +1,6 @@
 use std::collections::{HashMap, VecDeque};
 use std::env;
-use std::io::{Read, stdin};
+use std::io::{stdin, Read};
 
 use pest::Parser;
 use pest_derive::Parser;
@@ -39,15 +39,13 @@ file = _{ lines ~ indexes ~ NEWLINE ~ NEWLINE ~ body }
 "#]
 struct Day5Parser;
 
-fn parse_file() -> (HashMap<u32, VecDeque<String>>, Vec<(u32,u32,u32)>) {
+fn parse_file() -> (HashMap<u32, VecDeque<String>>, Vec<(u32, u32, u32)>) {
     let mut data = String::new();
-    stdin().read_to_string(&mut data)
-        .expect("lines");
+    stdin().read_to_string(&mut data).expect("lines");
 
     let mut moves = Vec::new();
     let mut crates = HashMap::new();
-    let pairs = Day5Parser::parse(Rule::file, data.as_str())
-        .expect("parse");
+    let pairs = Day5Parser::parse(Rule::file, data.as_str()).expect("parse");
 
     for record in pairs.clone().into_iter() {
         if let Rule::indexes = record.as_rule() {
@@ -73,7 +71,10 @@ fn parse_file() -> (HashMap<u32, VecDeque<String>>, Vec<(u32,u32,u32)>) {
                 }
             }
             Rule::body_line => {
-                let numbers: Vec<u32> = record.into_inner().map(|x| x.as_str().parse::<u32>().unwrap()).collect();
+                let numbers: Vec<u32> = record
+                    .into_inner()
+                    .map(|x| x.as_str().parse::<u32>().unwrap())
+                    .collect();
                 moves.push((numbers[0], numbers[1], numbers[2]));
             }
             _ => {}
