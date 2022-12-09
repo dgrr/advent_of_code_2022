@@ -42,7 +42,6 @@ fn get_files() -> Vec<(Vec<String>, u64)> {
 
     let commands = Day7Parser::parse(Rule::commands, data.as_str()).expect("parse");
 
-    let mut max_depth = 0;
     let mut files = Vec::new();
     let mut path = Vec::new();
     for command in commands.into_iter() {
@@ -66,9 +65,6 @@ fn get_files() -> Vec<(Vec<String>, u64)> {
                                     let mut inner = inner.into_inner();
                                     let number =
                                         inner.next().unwrap().as_str().parse::<u64>().unwrap();
-                                    // let name = inner.next().unwrap().as_str().to_string();
-
-                                    max_depth = max_depth.max(path.len());
 
                                     let mut new_path = path.clone();
 
@@ -94,7 +90,7 @@ fn get_files() -> Vec<(Vec<String>, u64)> {
         let files = files
             .iter()
             .filter(|x| x.0.eq(key))
-            .group_by(|x| key.clone())
+            .group_by(|_| key.clone())
             .into_iter()
             .map(|(key, values)| (key, values.map(|x| x.1).sum::<u64>()))
             .collect::<Vec<_>>();
